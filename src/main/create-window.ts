@@ -66,7 +66,7 @@ const createWindow = (opts?: BrowserWindowConstructorOptions) => {
 		disableBlinkFeatures: 'Auxclick',
 		preload: app.isPackaged
 			? path.join(__dirname, 'preload.js')
-			: path.join(__dirname, '../../.erb/dll/preload.js'),
+			: path.join(__dirname, '../../build/dll/preload.js'),
 		// Todo: secure
 		// contextIsolation: true, // Ensure context isolation
 		// nodeIntegration: false, // Disable Node.js integration

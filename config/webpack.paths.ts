@@ -1,11 +1,8 @@
 const path = require('path');
 
-const rootPath = path.join(__dirname, '../..');
+const rootPath = path.join(__dirname, '..');
 
-const erbPath = path.join(__dirname, '..');
-const erbNodeModulesPath = path.join(erbPath, 'node_modules');
-
-const dllPath = path.join(__dirname, '../dll');
+const dllPath = path.join(rootPath, 'build/dll');
 
 const srcPath = path.join(rootPath, 'src');
 const srcMainPath = path.join(srcPath, 'main');
@@ -25,7 +22,6 @@ const buildPath = path.join(releasePath, 'build');
 
 export default {
   rootPath,
-  erbNodeModulesPath,
   dllPath,
   srcPath,
   srcMainPath,

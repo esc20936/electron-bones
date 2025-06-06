@@ -1,6 +1,17 @@
 module.exports = {
-	extends: 'erb',
-	plugins: ['@typescript-eslint'],
+	extends: [
+		'eslint:recommended',
+		'@typescript-eslint/recommended',
+		'airbnb-base',
+		'plugin:react/recommended',
+		'plugin:react-hooks/recommended',
+		'plugin:jsx-a11y/recommended',
+		'plugin:import/recommended',
+		'plugin:import/typescript',
+		'plugin:promise/recommended',
+		'plugin:compat/recommended'
+	],
+	plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jsx-a11y', 'import', 'promise', 'compat'],
 	// Ignore shadcn/ui components
 	ignorePatterns: ['**/components/ui/**', '**/renderer/lib/**'],
 	rules: {
@@ -36,8 +47,19 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 2022,
 		sourceType: 'module',
+		ecmaFeatures: {
+			jsx: true,
+		},
+	},
+	env: {
+		browser: true,
+		node: true,
+		es2022: true,
 	},
 	settings: {
+		react: {
+			version: 'detect',
+		},
 		'import/resolver': {
 			// See https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-575727774 for line below
 			node: {
@@ -45,7 +67,7 @@ module.exports = {
 				moduleDirectory: ['node_modules', 'src/'],
 			},
 			webpack: {
-				config: require.resolve('./.erb/configs/webpack.config.eslint.ts'),
+				config: require.resolve('./config/webpack.config.eslint.ts'),
 			},
 			typescript: {},
 		},

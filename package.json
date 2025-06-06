@@ -43,32 +43,34 @@
 	"main": "./src/main/main.ts",
 	"scripts": {
 		"build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
-		"build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
-		"build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
-		"build:dll": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.ts",
-		"postinstall": "ts-node .erb/scripts/check-native-dep.js && electron-builder install-app-deps && npm run build:dll",
+		"build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./config/webpack.config.main.prod.ts",
+		"build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./config/webpack.config.renderer.prod.ts",
+		"build:dll": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./config/webpack.config.renderer.dev.dll.ts",
+		"postinstall": "ts-node scripts/check-native-dep.js && electron-builder install-app-deps && npm run build:dll",
 		"lint": "cross-env NODE_ENV=development eslint . --ext .js,.jsx,.ts,.tsx",
 		"lint:fix": "cross-env NODE_ENV=development eslint . --fix --ext .js,.jsx,.ts,.tsx",
-		"package": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build -mwl --publish never && npm run build:dll",
-		"package:mw": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build -mw --publish never && npm run build:dll",
-		"package:mac": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build -m --publish never && npm run build:dll",
-		"package:linux": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build -l --publish never && npm run build:dll",
-		"package:windows": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build -w --publish never && npm run build:dll",
+		"package": "ts-node ./scripts/clean.js dist && npm run build && electron-builder build -mwl --publish never && npm run build:dll",
+		"package:mw": "ts-node ./scripts/clean.js dist && npm run build && electron-builder build -mw --publish never && npm run build:dll",
+		"package:mac": "ts-node ./scripts/clean.js dist && npm run build && electron-builder build -m --publish never && npm run build:dll",
+		"package:linux": "ts-node ./scripts/clean.js dist && npm run build && electron-builder build -l --publish never && npm run build:dll",
+		"package:windows": "ts-node ./scripts/clean.js dist && npm run build && electron-builder build -w --publish never && npm run build:dll",
 		"rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
-		"start": "ts-node ./.erb/scripts/check-port-in-use.js && npm run start:renderer",
+		"start": "ts-node ./scripts/check-port-in-use.js && npm run start:renderer",
 		"start:main": "cross-env NODE_ENV=development electronmon -r ts-node/register/transpile-only .",
-		"start:preload": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
-		"start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
+		"start:preload": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./config/webpack.config.preload.dev.ts",
+		"start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./config/webpack.config.renderer.dev.ts",
 		"test": "jest",
 		"analyze": "ANALYZE=true npm run build",
 		"debug-prod": "npx cross-env DEBUG_PROD=true npm run package",
-		"version-bump": "node .erb/scripts/version-bump.js",
+		"version-bump": "node scripts/version-bump.js",
 		"version-bump:minor": "npx cross-env VERSION_BUMP=minor npm run version-bump",
 		"version-bump:major": "npx cross-env VERSION_BUMP=major npm run version-bump",
 		"version-bump:patch": "npx cross-env VERSION_BUMP=patch npm run version-bump"
 	},
 	"browserslist": [
-		"extends browserslist-config-erb"
+		"> 1%",
+		"last 2 versions",
+		"not dead"
 	],
 	"prettier": {
 		"singleQuote": true,
@@ -98,11 +100,11 @@
 			"json"
 		],
 		"moduleNameMapper": {
-			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/.erb/mocks/fileMock.js",
+			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
 			"\\.(css|less|sass|scss)$": "identity-obj-proxy"
 		},
 		"setupFiles": [
-			"./.erb/scripts/check-build-exists.ts"
+			"./scripts/check-build-exists.ts"
 		],
 		"testEnvironment": "jsdom",
 		"testEnvironmentOptions": {
@@ -110,7 +112,7 @@
 		},
 		"testPathIgnorePatterns": [
 			"release/app/dist",
-			".erb/dll"
+			"build/dll"
 		],
 		"transform": {
 			"\\.(ts|tsx|js|jsx)$": "ts-jest"
@@ -200,7 +202,6 @@
 		"@typescript-eslint/eslint-plugin": "^8.6.0",
 		"@typescript-eslint/parser": "^8.6.0",
 		"autoprefixer": "^10.4.20",
-		"browserslist-config-erb": "^0.0.3",
 		"chalk": "~4.1.2",
 		"concurrently": "^9.0.1",
 		"core-js": "^3.38.1",
@@ -214,7 +215,6 @@
 		"electronmon": "^2.0.3",
 		"eslint": "^8.57.1",
 		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-erb": "^4.1.0",
 		"eslint-import-resolver-typescript": "^3.6.3",
 		"eslint-import-resolver-webpack": "^0.13.9",
 		"eslint-plugin-compat": "^6.0.1",
@@ -266,7 +266,7 @@
 			"package.json",
 			"assets"
 		],
-		"afterSign": ".erb/scripts/notarize.js",
+		"afterSign": "scripts/notarize.js",
 		"mac": {
 			"target": {
 				"target": "default",
@@ -367,7 +367,7 @@
 		"patterns": [
 			"!**/**",
 			"src/main/**",
-			".erb/dll/**"
+			"build/dll/**"
 		],
 		"logLevel": "quiet"
 	},
