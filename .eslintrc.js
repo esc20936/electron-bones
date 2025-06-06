@@ -15,7 +15,7 @@ module.exports = {
 		'@typescript-eslint/no-shadow': 'error',
 		'no-unused-vars': 'off',
 
-		// Added in Electron-Hotplate
+		// Added in Electron-Bones
 		'@typescript-eslint/no-unused-vars': [
 			'warn',
 			{

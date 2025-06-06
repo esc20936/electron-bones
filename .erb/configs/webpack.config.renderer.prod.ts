@@ -12,7 +12,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { merge } from 'webpack-merge';
 import checkNodeEnv from '../scripts/check-node-env';
 import deleteSourceMaps from '../scripts/delete-source-maps';
-import baseConfig from './webpack.config.base';
+import baseConfig from './webpack.config.base.ts';
 import webpackPaths from './webpack.paths';
 
 checkNodeEnv('production');

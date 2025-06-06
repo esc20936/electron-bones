@@ -5,7 +5,7 @@ import {
 	app,
 	shell,
 } from 'electron';
-import { bugs, homepage } from '../../package.json';
+import { bugs, homepage } from '../../package.json' with { type: 'json' };
 
 import dock from './dock';
 import {

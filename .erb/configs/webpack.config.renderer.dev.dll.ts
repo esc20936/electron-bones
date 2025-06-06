@@ -5,9 +5,9 @@
 import webpack from 'webpack';
 import path from 'path';
 import { merge } from 'webpack-merge';
-import baseConfig from './webpack.config.base';
+import baseConfig from './webpack.config.base.ts';
 import webpackPaths from './webpack.paths';
-import { dependencies } from '../../package.json';
+import { dependencies } from '../../package.json' with { type: 'json' };
 import checkNodeEnv from '../scripts/check-node-env';
 
 checkNodeEnv('development');
