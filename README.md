@@ -1,228 +1,274 @@
-# Electron Bones 🔥
+# 🦴 Electron Bones
 
-A batteries-included Electron boilerplate with React, TypeScript, and more. Based on the [Electron React Boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate), this project includes a demo app showcasing basic functionality and inter-process communication between the main and renderer processes.
+> **The most complete Electron boilerplate for building production-ready desktop applications**
+
+A modern, batteries-included Electron boilerplate that gets you from idea to shipping in minutes, not days. Built with React, TypeScript, and the latest best practices.
 
 <div align="center">
 
 [![Build Status][github-actions-status]][github-actions-url]
 [![Github Tag][github-tag-image]][github-tag-url]
+[![License: CC-BY-NC-SA-4.0](https://img.shields.io/badge/License-CC--BY--NC--SA--4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+[🚀 Quick Start](#-quick-start) • [✨ Features](#-features) • [📖 Documentation](#-documentation) • [🎯 Examples](#-examples) • [🤝 Contributing](#-contributing)
 
 </div>
+
+---
+
+## 🎯 Why Electron Bones?
+
+**Stop wasting time on boilerplate setup.** Electron Bones includes everything you need to build professional desktop applications:
+
+- ⚡ **Zero Configuration** - Works out of the box with sensible defaults
+- 🏗️ **Production Ready** - Includes auto-updater, error handling, and analytics
+- 🎨 **Modern UI** - Beautiful components with Tailwind CSS and Shadcn/ui
+- � **Developer Experience** - Hot reload, TypeScript, linting, and testing
+- 📦 **Cross Platform** - Build for Windows, macOS, and Linux simultaneously
+- 🔌 **Extensible** - Well-structured architecture for easy customization
 
 ## ✨ Features
 
-- 🚀 React for the UI
-- 🖥️ Electron for cross-platform desktop app development
-- 📘 TypeScript for type-safe code
-- 🎨 TailwindCSS for styling
-- 🔌 Inter-process communication (IPC) between main and renderer processes
-- 🌍 Global context for state management
-- 🖼️ Multi-window support (main window and child window)
-- 🔔 App and System-wide Notifications
-- 🔄 Auto Updater
-- 💾 Built-in Store with electron-store
-- 🖱️ Context Menu
-- 🌙 Dark Mode
-- ❌ Error Handler
-- ⌨️ Keyboard Shortcut Manager
-- 📝 Logging
-- 🀱 Menu Bar for macOS, Windows, and Linux
-- 📂 Multi-Window
-- 🖥️ System Tray
-- 🎨 UI components from [Shadcn](https://ui.shadcn.com/)
+### 🚀 **Core Features**
+- **React 18** with hooks and modern patterns
+- **TypeScript** for type-safe development
+- **Tailwind CSS** for rapid styling
+- **Shadcn/ui** for beautiful, accessible components
+- **Hot Module Replacement** for instant development feedback
 
-## 🚀 Getting Started
+### 🏗️ **Production Features**
+- **Auto Updater** - Seamless app updates for users
+- **Error Handling** - Comprehensive error tracking and reporting
+- **Analytics** - Built-in usage analytics with Aptabase
+- **Logging** - Structured logging for debugging
+- **Store Management** - Persistent app settings with electron-store
 
-1. Clone this repository
+### 🎨 **UI/UX Features**
+- **Dark Mode** - System-aware theme switching
+- **Multi-Window Support** - Main window and child windows
+- **System Tray** - Background app functionality
+- **Native Menus** - Platform-specific menu bars
+- **Notifications** - App and system-wide notifications
+- **Context Menus** - Right-click functionality
 
-   ```bash
-   git clone https://github.com/lacymorrow/electron-hotplate.git
-   ```
+### ⌨️ **Developer Features**
+- **Keyboard Shortcuts** - Customizable hotkey management
+- **IPC Communication** - Type-safe inter-process communication
+- **Testing Setup** - Jest and React Testing Library
+- **Code Quality** - ESLint, Prettier, and Husky pre-commit hooks
+- **Build Tools** - Webpack with optimized production builds
 
-2. Go into the repository
+## 🚀 Quick Start
 
-   ```bash
-   cd electron-hotplate
-   ```
-
-3. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-4. Start the development server
-
-   ```bash
-   npm run start
-   ```
-
-## 📁 Project Structure
-
-- `src/main`: Contains the main process code
-- `src/renderer`: Contains the renderer process code (React components)
-- `src/config`: Contains configuration files
-- `src/utils`: Contains utility functions
-
-## 📜 Available Scripts
-
-- `npm run start`: Start the app in development mode
-- `npm run package`: Build the app for production
-- `npm run lint`: Run the linter
-- `npm run test`: Run tests
-
-## Production
-
-### Auto Update
-
-After publishing your first version, you can enable auto-update by uncommenting the `update` function contents in `src/main/auto-update.ts`.
-
-## Built With
-
-- [Electron](https://electronjs.org/)
-- [React](https://reactjs.org/)
-- [React Router](https://reacttraining.com/react-router/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn](https://ui.shadcn.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-
-## Development
-
-### Tailwind CSS
-
-We use Tailwind CSS for styling. See the [Tailwind CSS docs](https://tailwindcss.com/docs) for more information.
-
-Some Tailwind plugins have been added for convenience:
-
-- [Tailwind Animate](https://github.com/jamiebuilds/tailwindcss-animate) - `tailwindcss-animate`
-- [Tailwind Container Queries](https://github.com/tailwindlabs/tailwindcss-container-queries) - `@tailwindcss/container-queries`
-- Child selectors to target immediate children like `child:w-xl`
-- Don't forget group selectors too: `group` (Parent) `group-hover:bg-gray-100` (Child)
-
-### Shadcn
-
-Shadcn is a UI component library for React. See the [Shadcn docs](https://ui.shadcn.com/) for more information.
-Use `npx shadcn@latest add button ...` to add a component to your project.
-
-_Current installation command (to update all ui components):_
-
-```sh
-npx shadcn@latest add button checkbox dropdown-menu form input menubar radio-group scroll-area select separator sonner switch textarea
-```
-
-_To list components with updates: `npx shadcn@latest diff`_
-
-Based on the [Electron React Boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate), this boilerplate adds UI components from [Shadcn](https://ui.shadcn.com/), styling with [Tailwind CSS](https://tailwindcss.com/), persistance with [electron-store](https://github.com/sindresorhus/electron-store), and a structured [React](https://react.dev/) context that promotes a data flow from the top down: Main process -> Renderer process.
-
-<br>
-
-<div align="center">
-
-[![Build Status][github-actions-status]][github-actions-url]
-[![Github Tag][github-tag-image]][github-tag-url]
-
-</div>
-
-## Features
-
-- 💬 App and System-wide Notifications
-- 🏃‍♂️ Auto Updater
-- 📦 Built-in Store
-- 🖱️ Context Menu
-- 🌙 Dark Mode
-- ❌ Error Handler
-- ⌨️ Keyboard Shortcut Manager
-- 📝 Logging
-- 🀱 Menu Bar for macOS, Windows, and Linux
-- 📂 Multi-Window
-- 🖥️ System Tray
-
-## Getting Started
+Get up and running in less than 2 minutes:
 
 ```bash
+# Clone the repository
+git clone https://github.com/lacymorrow/electron-bones.git my-app
 
-# Clone this repository
-git clone https://github.com/lacymorrow/electron-hotplate.git
-
-# Go into the repository
-cd electron-hotplate
+# Navigate to your project
+cd my-app
 
 # Install dependencies
-yarn
+npm install
 
-# Run the app
-yarn start
+# Start development
+npm start
 ```
 
-## Production
+That's it! Your app will open automatically with hot reload enabled.
 
-### Auto Update
+## � Documentation
 
-After publishing your first version, you can enable auto-update by uncommenting the `update` function contents in `src/main/auto-update.ts`.
+### 🏗️ Project Structure
 
-## BuiltWith
-
-- [Electron](https://electronjs.org/)
-- [React](https://reactjs.org/)
-- [React Router](https://reacttraining.com/react-router/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn](https://ui.shadcn.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-
-## Development
-
-### Tailwind CSS
-
-We use Tailwind CSS for styling. See the [Tailwind CSS docs](https://tailwindcss.com/docs) for more information.
-
-Some Tailwind plugins have been added for convenience:
-
-- [Tailwind Animate](https://github.com/jamiebuilds/tailwindcss-animate) - `tailwindcss-animate`
-- [Tailwind Container Queries](https://github.com/tailwindlabs/tailwindcss-container-queries) - `@tailwindcss/container-queries`
-- Child selectors to target immediate children like `child:w-xl`
-- Don't forget group selectors too: `group` (Parent) `group-hover:bg-gray-100` (Child)
-
-### Shadcn
-
-Shadcn is a UI component library for React. See the [Shadcn docs](https://ui.shadcn.com/) for more information.
-Use `npx shadcn-ui@latest add accordion ...` to add a component to your project.
-
-_Current installation command (to update all ui components):_
-
-```sh
-npx shadcn-ui@latest add button checkbox dropdown-menu form input menubar radio-group scroll-area select separator sonner switch textarea
+```
+src/
+├── main/              # Main process (Node.js)
+│   ├── main.ts       # App entry point
+│   ├── windows.ts    # Window management
+│   ├── menu.ts       # Application menus
+│   ├── ipc.ts        # IPC handlers
+│   └── ...
+├── renderer/          # Renderer process (React)
+│   ├── components/   # UI components
+│   ├── views/        # App screens
+│   ├── context/      # React context
+│   └── ...
+└── types/            # TypeScript definitions
 ```
 
-_To list components with updates: `npx shadcn-ui@latest diff`_
+### �️ Available Scripts
 
-### Build for production
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start development with hot reload |
+| `npm run build` | Build for production |
+| `npm run package` | Package app for all platforms |
+| `npm run package:mac` | Package for macOS only |
+| `npm run package:windows` | Package for Windows only |
+| `npm run package:linux` | Package for Linux only |
+| `npm test` | Run test suite |
+| `npm run lint` | Run linting |
 
-```sh
+### 🎨 Styling
+
+**Tailwind CSS** is pre-configured with useful plugins:
+- `tailwindcss-animate` for smooth animations
+- `@tailwindcss/container-queries` for responsive containers
+- Custom child selectors: `child:w-xl`
+- Group selectors: `group-hover:bg-gray-100`
+
+**Shadcn/ui Components** are available out of the box:
+```bash
+# Add new components
+npx shadcn@latest add button card dialog
+```
+
+### 🔌 Adding Features
+
+**IPC Communication:**
+```typescript
+// Main process
+ipcMain.handle('get-app-version', () => app.getVersion())
+
+// Renderer process
+const version = await window.electronAPI.getAppVersion()
+```
+
+**Store Management:**
+```typescript
+import { store } from './store'
+
+// Save data
+store.set('user.name', 'John Doe')
+
+// Load data
+const userName = store.get('user.name')
+```
+
+## 🎯 Examples
+
+### Multi-Window Apps
+Create child windows for settings, about dialogs, or secondary views:
+
+```typescript
+import { createChildWindow } from './create-window'
+
+const settingsWindow = createChildWindow({
+  title: 'Settings',
+  width: 600,
+  height: 400,
+  route: '/settings'
+})
+```
+
+### System Integration
+Add your app to the system tray:
+
+```typescript
+import { createTray } from './tray'
+
+const tray = createTray()
+tray.setContextMenu(Menu.buildFromTemplate([
+  { label: 'Show App', click: () => mainWindow.show() },
+  { label: 'Quit', click: () => app.quit() }
+]))
+```
+
+### Auto Updates
+Enable seamless updates for your users:
+
+```typescript
+// Uncomment in auto-update.ts after first release
+autoUpdater.checkForUpdatesAndNotify()
+```
+
+## � Deployment
+
+### Building for Production
+
+```bash
+# Build for all platforms
 npm run package
+
+# Build for specific platform
+npm run package:mac     # macOS
+npm run package:windows # Windows
+npm run package:linux   # Linux
 ```
 
-#### Important Notes
+### Auto Updates
 
-- The `src/main/auto-update.ts` file is where the auto-updater is configured. Uncomment the `update` function to enable auto-update after publishing your first version.
-- The app icon will **ALWAYS** be the default Electron icon in development. You will need to build the app with `npm run package` to get a new icon.
+1. **First Release**: Package and distribute your app
+2. **Enable Updates**: Uncomment the auto-updater in `src/main/auto-update.ts`
+3. **Subsequent Releases**: The app will automatically update
+
+### Code Signing
+
+Configure code signing in `package.json` under the `build` section for distribution on app stores.
+
+## 🎨 Customization
+
+### Branding
+- Replace icons in `assets/icons/`
+- Update `package.json` metadata
+- Customize the About dialog in settings
+
+### Themes
+- Modify Tailwind config in `tailwind.config.js`
+- Add custom CSS in `src/renderer/styles/`
+- Use the theme context for dark/light mode
+
+### Menus
+- Edit `src/main/menu.ts` for application menus
+- Modify `src/main/context-menu.ts` for right-click menus
+
+## 🧪 Testing
+
+Run the test suite:
+```bash
+npm test                    # Run all tests
+npm test -- --watch        # Watch mode
+npm test -- --coverage     # With coverage
+```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-### Electron-React-Boilerplate
+### Development Setup
 
-See the Electron React Boilerplate [docs and guides here](https://electron-react-boilerplate.js.org/docs/installation)
-
-#### Tutorials
-
-- Creating multiple windows: <https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/623#issuecomment-1382717291>
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes
+4. Run tests: `npm test`
+5. Commit: `git commit -m 'Add amazing feature'`
+6. Push: `git push origin feature/amazing-feature`
+7. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the CC-BY-NC-SA-4.0 License.
+This project is licensed under the [CC-BY-NC-SA-4.0](LICENSE) License.
 
-[github-actions-status]: https://github.com/lacymorrow/electron-shadcn-boilerplate/workflows/Build/badge.svg
-[github-actions-url]: https://github.com/lacymorrow/electron-shadcn-boilerplate/actions
-[github-tag-image]: https://img.shields.io/github/tag/electron-react-boilerplate/electron-react-boilerplate.svg?label=version
-[github-tag-url]: https://github.com/lacymorrow/electron-shadcn-boilerplate/releases/latest
+## 🙏 Acknowledgments
+
+Built on the shoulders of giants:
+- [Electron React Boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) - The original inspiration
+- [Shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+
+---
+
+<div align="center">
+
+**[⭐ Star this repo](https://github.com/lacymorrow/electron-bones) if it helped you build something awesome!**
+
+Made with ❤️ by [Lacy Morrow](https://lacymorrow.com)
+
+</div>
+
+[github-actions-status]: https://github.com/lacymorrow/electron-bones/workflows/Build/badge.svg
+[github-actions-url]: https://github.com/lacymorrow/electron-bones/actions
+[github-tag-image]: https://img.shields.io/github/tag/lacymorrow/electron-bones.svg?label=version
+[github-tag-url]: https://github.com/lacymorrow/electron-bones/releases/latest
