@@ -16,13 +16,13 @@ const FOUR_HOURS = 1000 * 60 * 60 * 4;
 export class AutoUpdate {
 	constructor() {
 		if (getSetting('allowAutoUpdate')) {
-			Logger.status($autoUpdate.autoUpdate);
+			// Logger.status($autoUpdate.autoUpdate);
 
-			// Configure log debugging to file
-			Logger.transports.file.level = 'silly';
-			autoUpdater.logger = Logger;
+			// // Configure log debugging to file
+			// Logger.transports.file.level = 'silly';
+			// autoUpdater.logger = Logger;
 
-			autoUpdater.checkForUpdatesAndNotify();
+			// autoUpdater.checkForUpdatesAndNotify();
 		}
 	}
 }
@@ -44,26 +44,26 @@ const onDownloadProgress = (progressObject: ProgressInfo) => {
 };
 
 const onUpdateAvailable = () => {
-	try {
-		// Notify user of update
-		notification({
-			title: $autoUpdate.updateAvailable,
-			body: $autoUpdate.updateAvailableBody,
-		});
+	// try {
+	// 	// Notify user of update
+	// 	notification({
+	// 		title: $autoUpdate.updateAvailable,
+	// 		body: $autoUpdate.updateAvailableBody,
+	// 	});
 
-		sound.play('UPDATE');
+	// 	sound.play('UPDATE');
 
-		if (is.linux) {
-			dialog.openUpdateDialog(() => {
-				// AutoUpdater.downloadUpdate()
-				shell.openExternal(
-					'https://github.com/lacymorrow/crossover/releases/latest',
-				);
-			});
-		}
-	} catch (error) {
-		Logger.error(error);
-	}
+	// 	if (is.linux) {
+	// 		dialog.openUpdateDialog(() => {
+	// 			// AutoUpdater.downloadUpdate()
+	// 			shell.openExternal(
+	// 				'https://github.com/lacymorrow/crossover/releases/latest',
+	// 			);
+	// 		});
+	// 	}
+	// } catch (error) {
+	// 	Logger.error(error);
+	// }
 };
 
 const onUpdateDownloaded = () => {

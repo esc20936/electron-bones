@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* App container for rounded corners */
+.window-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  background: #fff; /* Or dark, depending on theme */
+}
+
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;

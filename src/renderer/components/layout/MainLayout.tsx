@@ -24,10 +24,7 @@ export function MainLayout({ children }: { children?: React.ReactNode }) {
 					{children || <Outlet />}
 				</div>
 			</div>
-			<Footer>
-				<OnlineStatus />
-				<AppStatus />
-			</Footer>
+
 		</div>
 	);
 }

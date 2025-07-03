@@ -31,7 +31,7 @@ export interface SettingsType {
 
 // These are the default settings, imported by the store
 export const DEFAULT_SETTINGS: SettingsType = {
-	accentColor: '#b453ff',
+	accentColor: '#fff', // default to white
 	allowAnalytics: true,
 	allowAutoUpdate: true,
 	allowSounds: true,
@@ -42,7 +42,7 @@ export const DEFAULT_SETTINGS: SettingsType = {
 	startMinimized: false,
 	quitOnWindowClose: false,
 
-	theme: 'system',
+	theme: 'light',
 };
 
 // see src/main/keyboard-shortcuts.ts

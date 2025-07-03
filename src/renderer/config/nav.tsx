@@ -23,6 +23,10 @@ export const nav = {
 		title: 'Settings',
 		href: '/settings',
 	},
+	analysis: {
+		title: 'Analysis',
+		href: '/analysis',
+	},
 };
 
 export const settingsNavItems = [

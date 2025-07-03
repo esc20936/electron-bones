@@ -1,13 +1,11 @@
 {
-	"name": "electron-bones",
-	"productName": "Electron Bones",
-	"appId": "com.lacymorrow.bones",
-	"version": "4.6.0",
-	"description": "A batteries-included Electron boilerplate.",
+	"name": "e3-data-handler",
+	"productName": "E3 Data Handler",
+	"version": "1.0.0",
+	"description": "A data handler for E3 that allows you to upload, analyze, and visualize data.",
 	"license": "CC-BY-NC-SA-4.0",
 	"copyright": "Copyright © Lacy Morrow",
-	"repository": "lacymorrow/electron-bones",
-	"homepage": "https://lacymorrow.github.io/electron-bones",
+	"repository": "esc20936/e3-data-handler",
 	"keywords": [
 		"electron",
 		"boilerplate",
@@ -20,26 +18,11 @@
 		"reload"
 	],
 	"bugs": {
-		"url": "https://github.com/lacymorrow/electron-bones/issues",
-		"email": "me@lacymorrow.com"
 	},
 	"author": {
-		"name": "Lacy Morrow",
-		"email": "me@lacymorrow.com",
-		"url": "https://lacymorrow.com"
+		"name": "Pablo Escobar",
+		"email": "pablo.pees@gmail.com"
 	},
-	"contributors": [
-		{
-			"name": "Lacy Morrow",
-			"email": "me@lacymorrow.com",
-			"url": "https://github.com/lacymorrow"
-		},
-		{
-			"name": "Amila Welihinda",
-			"email": "amilajack@gmail.com",
-			"url": "https://github.com/amilajack"
-		}
-	],
 	"main": "./src/main/main.ts",
 	"scripts": {
 		"build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
@@ -144,7 +127,7 @@
 		"@radix-ui/react-slider": "^1.2.3",
 		"@radix-ui/react-slot": "^1.1.2",
 		"@radix-ui/react-switch": "^1.1.3",
-		"@radix-ui/react-tabs": "^1.1.3",
+		"@radix-ui/react-tabs": "^1.1.12",
 		"@radix-ui/react-toast": "^1.2.6",
 		"@radix-ui/react-toggle": "^1.1.2",
 		"@radix-ui/react-toggle-group": "^1.1.2",
@@ -162,6 +145,7 @@
 		"electron-unhandled": "^5.0.0",
 		"electron-updater": "^6.3.4",
 		"embla-carousel-react": "^8.5.2",
+		"html2canvas": "^1.4.1",
 		"input-otp": "^1.4.2",
 		"is-online": "^11.0.0",
 		"lucide-react": "^0.441.0",
@@ -255,8 +239,8 @@
 		"webpack-merge": "^6.0.1"
 	},
 	"build": {
-		"productName": "Electron Bones",
-		"appId": "com.lacymorrow.bones",
+		"productName": "E3 Data Handler",
+		"appId": "com.esc20936.e3datahandler",
 		"asar": true,
 		"asarUnpack": "**\\*.{node,dll}",
 		"files": [
@@ -314,14 +298,14 @@
 		"nsis": {
 			"unicode": false,
 			"artifactName": "${productName}-${version}.${ext}",
-			"uninstallDisplayName": "Electron Bones"
+			"uninstallDisplayName": "E3 Data Handler"
 		},
 		"appx": {
-			"applicationId": "ElectronBones",
+			"applicationId": "E3DataHandler",
 			"artifactName": "${productName}.${ext}",
 			"backgroundColor": "#464646",
-			"displayName": "Electron Bones",
-			"identityName": "2886Fly5.ElectronBones",
+			"displayName": "E3 Data Handler",
+			"identityName": "2886Fly5.E3DataHandler",
 			"publisher": "CN=C53C0091-1EEB-40B4-8537-082E06A4D328",
 			"publisherDisplayName": "Fly5",
 			"showNameOnTiles": true
@@ -355,7 +339,12 @@
 			"output": "release/build"
 		},
 		"extraResources": [
-			"./assets/**"
+			"./assets/**",
+			{
+				"from": "resources/server.exe",
+				"to": "server.exe"
+			}
+
 		],
 		"publish": {
 			"provider": "github",

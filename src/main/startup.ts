@@ -18,6 +18,7 @@ import tray from './tray';
 import { debugInfo, is } from './util';
 import windows from './windows';
 
+
 export const startup = () => {
 	console.timeLog(app.name, $init.startup);
 

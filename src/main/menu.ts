@@ -344,7 +344,7 @@ export default class MenuBuilder {
 			...(is.debug ? [this.subMenuDev] : []),
 		];
 
-		return templateDefault;
+		return [];
 	}
 }
 
